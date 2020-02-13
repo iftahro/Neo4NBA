@@ -13,8 +13,11 @@ PLAYED_AT_RELATION_NAME = "PLAYED_AT"
 NBA_SHORTS = ["ATL", "BKN", "BOS", "CHA", "CHI", "CLE", "DAL", "DEN", "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM",
               "MIA", "MIL", "MIN", "NOP", "NYK", "OKC", "ORL", "PHI", "PHX", "POR", "SAC", "SAS", "TOR", "UTA", "WAS"]
 
-NBA_AWARDS = {"mvp": "MostValuablePlayer", "roy": "RookieOfTheYear", "mip": "MostImprovedPlayer",
-              "dpoy": "DefensivePlayerOfTheYear", "finals_mvp": "FinalsMvp"}
+PERSONAL_AWARDS = {"Most Valuable Player": "MVP",
+                   "Rookie Of The Year": "ROY",
+                   "Most Improved Player": "MIP",
+                   "Defensive Player Of The Year": "DPOY",
+                   "Finals MVP": "FMVP"}
 
 INVALID_TEAMS_LABELS = {"BKN": "BRK",
                         "CHA": "CHO",

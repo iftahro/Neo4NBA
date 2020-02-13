@@ -3,7 +3,7 @@ from neo4j import GraphDatabase
 from config import NEO4J_USERNAME, NEO4J_BOLT_CONNECTION, NEO4J_PASSWORD
 from constants import NBA_SHORTS, NBA_AWARDS, TEAMS_URL, ROSTER_URL, AWARD_URL, COACHES_URL, INVALID_TEAMS_LABELS, \
     CHAMPIONS_URL
-from graph_updaters.award_graph_updater import AwardGraphUpdater
+from graph_updaters.award_graph_updater import award_graph_updater
 from graph_updaters.champions_graph_updater import ChampionsGraphUpdater
 from graph_updaters.coaches_graph_updater import CoachesGraphUpdater
 from graph_updaters.division_graph_updater import DivisionGraphUpdater
@@ -43,7 +43,7 @@ def main():
 
     # Personal awards
     for award in NBA_AWARDS.keys():
-        storylines.append(CsvStoryline(AwardGraphUpdater(award), AwardHtmlParser(award),
+        storylines.append(CsvStoryline(award_graph_updater(award), AwardHtmlParser(award),
                                        AWARD_URL.format(award_name=award)))
     storylines.append(CsvStoryline(ChampionsGraphUpdater("nba_champions.csv"), ChampionsHtmlParser(), CHAMPIONS_URL))
 
