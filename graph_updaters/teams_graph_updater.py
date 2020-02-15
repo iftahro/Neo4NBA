@@ -1,19 +1,28 @@
-from core_objects.graph_updater_base import CsvGraphUpdater
+from core_objects.graph_updater import GraphUpdater
 
+CREATE_NBA_TEAMS = """
+LOAD CSV WITH HEADERS FROM "file:///teams.csv" AS row
+WITH row, toInteger(row.MIN_YEAR) as year
+MERGE (t:Team{name:row.FULLNAME})
+ON CREATE SET t += {
+short:row.ABBREVIATION, general_manager:row.GENERALMANAGER, owner:row.OWNER, 
+arena:row.ARENA, year_founded:year, city:row.CITY }
 
-class TeamGraphUpdater(CsvGraphUpdater):
-    CREATE_NBA_TEAMS = """
-    LOAD CSV WITH HEADERS FROM "file:///{file_name}" AS row
-    MERGE (t:Team{{name:row.full_name}})
-    WITH t, row.short AS short
-    CALL apoc.create.addLabels(t, [short]) YIELD node
-    RETURN node
-    """
+WITH t, row.ABBREVIATION AS short
+CALL apoc.create.addLabels(t, [short]) YIELD node
+RETURN node
+"""
 
-    def __init__(self):
-        file_name = "nba_teams.csv"
-        super().__init__(file_name)
+ADD_ADDITIONAL_LABELS = """
+MATCH (t:Team{{short:{short}}})
+CALL apoc.create.addLabels(t,{labels}) YIELD node
+RETURN node
+"""
 
-    def update_graph(self, driver):
-        with driver.session() as session:
-            session.run(self.CREATE_NBA_TEAMS.format(file_name=self.file_name))
+team_graph_updater = GraphUpdater([
+    CREATE_NBA_TEAMS,
+    ADD_ADDITIONAL_LABELS.format(short="'BKN'", labels=['NJN', 'BRK']),
+    ADD_ADDITIONAL_LABELS.format(short="'NOP'", labels=['NOH']),
+    ADD_ADDITIONAL_LABELS.format(short="'PHX'", labels=['PHO']),
+    ADD_ADDITIONAL_LABELS.format(short="'CHA'", labels=['CHO'])
+])

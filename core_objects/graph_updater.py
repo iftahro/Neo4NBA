@@ -2,7 +2,7 @@ from neo4j import GraphDatabase
 
 
 class GraphUpdater:
-    def __init__(self, queries: list[str]):
+    def __init__(self, queries):
         self.queries = queries
 
     def update_graph(self, driver: GraphDatabase.driver):
