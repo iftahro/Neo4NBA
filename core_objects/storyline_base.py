@@ -1,7 +1,5 @@
 from abc import ABCMeta, abstractmethod
-
 from core_objects.graph_updater import GraphUpdater
-from core_objects.graph_updater_base import GraphUpdaterBase
 from core_objects.html_parser_base import HtmlParserBase
 
 

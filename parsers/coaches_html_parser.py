@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 
 from config import BEAUTIFUL_SOUP_FEATURE
-from constants import INVALID_TEAMS_LABELS
+from constants import INVALID_TEAMS_LABELS, COACHES_URL
 from core_objects.html_parser_base import HtmlParserBase
+from utils.utils import ExtractHtmlFromUrl, SaveMatrixToCsv
 
 
 class CoachesHtmlParser(HtmlParserBase):

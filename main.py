@@ -1,9 +1,10 @@
 from neo4j import GraphDatabase
 from config import NEO4J_USERNAME, NEO4J_BOLT_CONNECTION, NEO4J_PASSWORD
+from graph_updaters.coach_graph_updater import coaches_graph_updater
 from graph_updaters.division_graph_updater import division_graph_updater
-from graph_updaters.positions_graph_updater import position_graph_updater
-from graph_updaters.rosters_graph_updater import rosters_graph_updater
-from graph_updaters.teams_graph_updater import team_graph_updater
+from graph_updaters.object_properties_graph_updater import object_properties_graph_updater
+from graph_updaters.roster_graph_updater import roster_creator_graph_updater
+from graph_updaters.team_graph_updater import team_graph_updater
 from hosted_service import HostedService
 from storylines.basic_storyline import BasicStoryline
 
@@ -39,8 +40,9 @@ def main():
     hosted_service = HostedService([
         BasicStoryline(team_graph_updater),
         BasicStoryline(division_graph_updater),
-        BasicStoryline(rosters_graph_updater),
-        BasicStoryline(position_graph_updater)
+        BasicStoryline(roster_creator_graph_updater),
+        BasicStoryline(coaches_graph_updater),
+        BasicStoryline(object_properties_graph_updater)
     ])
     hosted_service.run(neo4j_driver)
 

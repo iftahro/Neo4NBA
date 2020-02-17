@@ -1,14 +1,14 @@
 from os import listdir
 
 from config import NEO4J_IMPORT_DIRECTORY
-from core_objects.graph_updater_base import GraphUpdaterBase
+from core_objects.graph_updater import GraphUpdater
 from core_objects.html_parser_base import HtmlParserBase
 from core_objects.storyline_base import StorylineBase
 from utils.utils import ExtractHtmlFromUrl, SaveMatrixToCsv
 
 
 class CsvStoryline(StorylineBase):
-    def __init__(self, graph_updater: GraphUpdaterBase, html_parser: HtmlParserBase, url):
+    def __init__(self, graph_updater: GraphUpdater, html_parser: HtmlParserBase, url):
         super().__init__(graph_updater, html_parser)
         self.url = url
 
