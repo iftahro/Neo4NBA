@@ -11,30 +11,6 @@ from storylines.basic_storyline import BasicStoryline
 
 def main():
     neo4j_driver = GraphDatabase.driver(NEO4J_BOLT_CONNECTION, auth=(NEO4J_USERNAME, NEO4J_PASSWORD), encrypted=False)
-    # storylines = []
-    # # All NBA teams
-    # storylines.append(CsvStoryline(team_graph_updater(), TeamsHtmlParser(), TEAMS_URL))
-    # # Divisions and conferences
-    # storylines.append(BasicStoryline(division_graph_updater("nba_divisions.csv")))
-    #
-    # # Rosters and coaches
-    # for i in range(2015, 2021):
-    #     for short in NBA_SHORTS:
-    #         roster_url = ROSTER_URL.format(team_label=short, year=str(i))
-    #         if short in INVALID_TEAMS_LABELS.keys():
-    #             roster_url = ROSTER_URL.format(team_label=INVALID_TEAMS_LABELS[short], year=str(i))
-    #         storylines.append(CsvStoryline(roster_graph_updater(short, str(i)), RosterHtmlParser(), roster_url))
-    #     # Coaches
-    #     storylines.append(CsvStoryline(coaches_graph_updater(str(i)), CoachesHtmlParser(),
-    #                                    COACHES_URL.format(year=str(i))))
-    # # Positions
-    # storylines.append(BasicStoryline(PositionsGraphUpdater()))
-    #
-    # # Personal awards
-    # for award in NBA_AWARDS.keys():
-    #     storylines.append(CsvStoryline(award_graph_updater(award), AwardHtmlParser(award),
-    #                                    AWARD_URL.format(award_name=award)))
-    # storylines.append(CsvStoryline(ChampionsGraphUpdater("nba_champions.csv"), ChampionsHtmlParser(), CHAMPIONS_URL))
 
     # Starts the program
     hosted_service = HostedService([
