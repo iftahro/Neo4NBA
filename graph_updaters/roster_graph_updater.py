@@ -17,7 +17,7 @@ rebounds:toFloat(row.TRB),  steals:toFloat(row.STL),  blocks:toFloat(row.BLK),  
 `fg%`:toFloat(row.FGP),  `2p%`:toFloat(row.`2PP`),  `3p%`:toFloat(row.`3PP`) }}
 
 WITH row, r, t
-CALL apoc.create.addLabels(r, [row.Tm, row.Year, t.short]) YIELD node
+CALL apoc.create.addLabels(r, [row.Tm, t.short]) YIELD node
 RETURN node
 """
 
