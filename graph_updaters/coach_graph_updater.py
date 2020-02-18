@@ -12,6 +12,9 @@ games:toInteger(row.games),
 wins:toInteger(row.wins),
 losses:toInteger(row.losses)
 }}
+
+WITH r, toInteger((r.wins / toFloat(r.games) * 1000))/1000.0 as winning
+SET r.`win%` = winning
 """
 
 coaches_queries = []

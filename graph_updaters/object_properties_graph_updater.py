@@ -27,13 +27,14 @@ CALL apoc.create.setProperties([c],["teams_coached","total_games","total_wins","
 ADD_WINNING_PERCENTAGE = """
 MATCH (r:{label})
 WITH r, toInteger(toFloat(r.{wins}) / toFloat(r.{games}) * 1000)/1000.0 as winning
-CALL apoc.create.setProperties([r],["win%"],[winning]) YIELD node return node
+CALL apoc.create.setProperties([r],["{win_name}"],[winning]) YIELD node RETURN node
 """
 
 object_properties_graph_updater = GraphUpdater([
     ADD_ROSTER_WINS_AND_LOSSES,
     ADD_PLAYER_PROPERTIES,
     ADD_COACH_PROPERTIES,
-    ADD_WINNING_PERCENTAGE.format(label="Coach", wins="total_wins", games="total_games"),
-    ADD_WINNING_PERCENTAGE.format(label="Roster", wins="wins", games="games")
+    ADD_WINNING_PERCENTAGE.format(label="Coach", wins="total_wins", games="total_games", win_name="total_win%"),
+    ADD_WINNING_PERCENTAGE.format(label="Roster", wins="wins", games="games", win_name="win%"),
+    ADD_WINNING_PERCENTAGE
 ])

@@ -21,8 +21,8 @@ CALL apoc.create.addLabels(r, [row.Tm, t.short]) YIELD node
 RETURN node
 """
 
-roster_creator_graph_updater = GraphUpdater([
-    CREATE_ROSTERS_BY_PLAYERS.format(file_name="2010_2016_players"),
+roster_graph_updater = GraphUpdater([
+    CREATE_ROSTERS_BY_PLAYERS.format(file_name="2010_2017_players"),
     CREATE_ROSTERS_BY_PLAYERS.format(file_name="2018_players"),
     CREATE_ROSTERS_BY_PLAYERS.format(file_name="2019_players")
 ])

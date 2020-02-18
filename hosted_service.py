@@ -10,4 +10,3 @@ class HostedService:
     def run(self, driver):
         for storyline in self.storylines:
             storyline.action(driver)
-            print(f"Finished updating {type(storyline).__name__}")
