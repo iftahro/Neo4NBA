@@ -16,6 +16,6 @@ CALL apoc.create.setProperty([t], "division", [row.division]) YIELD node AS o
 RETURN o  
 """
 
-division_graph_updater = GraphUpdater([
+division_graph_updater = GraphUpdater("division_graph_updater", [
     ADD_DIVISIONS
 ])

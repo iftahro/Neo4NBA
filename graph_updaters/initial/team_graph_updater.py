@@ -19,7 +19,7 @@ CALL apoc.create.addLabels(t,{labels}) YIELD node
 RETURN node
 """
 
-team_graph_updater = GraphUpdater([
+team_graph_updater = GraphUpdater("team_graph_updater", [
     CREATE_NBA_TEAMS,
     ADD_ADDITIONAL_LABELS.format(short="'BKN'", labels=['NJN', 'BRK']),
     ADD_ADDITIONAL_LABELS.format(short="'NOP'", labels=['NOH']),

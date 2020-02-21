@@ -7,7 +7,7 @@ toInteger(row.Yr) AS year ,row
 MATCH (w:Roster{year:year, team:winner})
 MATCH (l:Roster{year:year, team:loser})
 
-MERGE (w)-[a:WON_SERIES]->(s:Series:Playoff{name:row.Series})<-[b:LOST_SERIES]-(l)
+MERGE (w)-[a:WON_SERIES]->(s:Series:Playoffs{name:row.Series})<-[b:LOST_SERIES]-(l)
 ON CREATE SET s += {
 date:row.Date,
 winner:winner,
@@ -24,13 +24,13 @@ SET s.games= a.wins + a.losses
 """
 
 ADD_FINAL_SCORE = """
-MATCH (s:Series:Playoff)<-[r:WON_SERIES]-(:Roster)
+MATCH (s:Series:Playoffs)<-[r:WON_SERIES]-(:Roster)
 WITH toString(r.wins) + "-" + toString(r.losses) AS games, s
 SET s.final_score = games
 """
 
 ADD_IS_SWEEP = """
-MATCH (s:Series:Playoff)
+MATCH (s:Series:Playoffs)
 
 CALL apoc.do.when(s.games = 4,
 'SET s.is_sweep=true',
@@ -38,7 +38,7 @@ CALL apoc.do.when(s.games = 4,
 RETURN value
 """
 
-playoff_series_graph_updater = GraphUpdater([
+playoff_series_graph_updater = GraphUpdater("playoff_series_graph_updater", [
     ADD_PLAYOFF_SERIES,
     ADD_FINAL_SCORE,
     ADD_IS_SWEEP

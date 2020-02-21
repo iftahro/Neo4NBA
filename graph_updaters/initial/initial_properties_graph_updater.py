@@ -27,14 +27,27 @@ CALL apoc.create.setProperties([c],["teams_coached","total_games","total_wins","
 ADD_WINNING_PERCENTAGE = """
 MATCH (r:{label})
 WITH r, toInteger(toFloat(r.{wins}) / toFloat(r.{games}) * 1000)/1000.0 as winning
-CALL apoc.create.setProperties([r],["{win_name}"],[winning]) YIELD node RETURN node
+SET r.`{win_name}` = winning
 """
 
-object_properties_graph_updater = GraphUpdater([
+ADD_SEASONS_PLAYED = """
+MATCH (p:Player)-[r:PLAYED_AT]->(:Roster)
+WITH SIZE(COLLECT(DISTINCT r.year)) as s, p
+SET p.seasons_played = s
+"""
+
+ADD_LOYALTY = """
+MATCH (p:Player)-[l:PLAYED_AT]->(:Roster)
+WHERE SIZE(p.teams_played) = 1 AND p.seasons_played >= 5
+SET p:Loyal
+"""
+
+initial_properties_graph_updater = GraphUpdater("initial_properties_graph_updater", [
     ADD_ROSTER_WINS_AND_LOSSES,
     ADD_PLAYER_PROPERTIES,
     ADD_COACH_PROPERTIES,
     ADD_WINNING_PERCENTAGE.format(label="Coach", wins="total_wins", games="total_games", win_name="total_win%"),
     ADD_WINNING_PERCENTAGE.format(label="Roster", wins="wins", games="games", win_name="win%"),
-    ADD_WINNING_PERCENTAGE
+    ADD_SEASONS_PLAYED,
+    ADD_LOYALTY
 ])
