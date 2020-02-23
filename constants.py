@@ -10,5 +10,6 @@ INVALID_TEAMS_LABELS = {"BKN": "BRK",
                         "CHA": "CHO",
                         "PHX": "PHO"}
 
+YEARS_SUPPORTED = [year for year in range(2010, 2021)]
 CURRENT_YEAR = 2020
 

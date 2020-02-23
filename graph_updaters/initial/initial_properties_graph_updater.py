@@ -42,6 +42,12 @@ WHERE SIZE(p.teams_played) = 1 AND p.seasons_played >= 5
 SET p:Loyal
 """
 
+ADD_NICKNAMES = """
+LOAD CSV WITH HEADERS FROM "file:///nicknames.csv" AS row
+MATCH (p:Player{name:row.name})
+SET p.nickname = row.nick
+"""
+
 initial_properties_graph_updater = GraphUpdater("initial_properties_graph_updater", [
     ADD_ROSTER_WINS_AND_LOSSES,
     ADD_PLAYER_PROPERTIES,
@@ -49,5 +55,6 @@ initial_properties_graph_updater = GraphUpdater("initial_properties_graph_update
     ADD_WINNING_PERCENTAGE.format(label="Coach", wins="total_wins", games="total_games", win_name="total_win%"),
     ADD_WINNING_PERCENTAGE.format(label="Roster", wins="wins", games="games", win_name="win%"),
     ADD_SEASONS_PLAYED,
-    ADD_LOYALTY
+    ADD_LOYALTY,
+    ADD_NICKNAMES
 ])

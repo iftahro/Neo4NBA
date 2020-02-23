@@ -1,3 +1,5 @@
+import logging
+
 from neo4j import GraphDatabase
 from config import NEO4J_USERNAME, NEO4J_BOLT_CONNECTION, NEO4J_PASSWORD
 from graph_updaters.awards.award_properties_graph_updater import award_properties_graph_updater
@@ -6,7 +8,6 @@ from graph_updaters.draft.draft_graph_updater import draft_graph_updater
 from graph_updaters.draft.draft_properties_graph_updater import draft_properties_graph_updater
 from graph_updaters.draft.rookie_graph_updater import rookie_graph_updater
 from graph_updaters.initial.coach_graph_updater import coaches_graph_updater
-from graph_updaters.initial.division_graph_updater import division_graph_updater
 from graph_updaters.initial.initial_properties_graph_updater import initial_properties_graph_updater
 from graph_updaters.playoffs.champions_graph_updater import champions_graph_updater
 from graph_updaters.playoffs.playoff_series_graph_updater import playoff_series_graph_updater
@@ -16,12 +17,22 @@ from hosted_service import HostedService
 from core_objects.storyline import Storyline
 
 
+def configure_logging():
+    logging.basicConfig(
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        level=logging.DEBUG,
+        handlers=[logging.StreamHandler()])
+
+    logging.getLogger("neobolt").setLevel(logging.WARNING)
+
+
 def main():
+    configure_logging()
+
     neo4j_driver = GraphDatabase.driver(NEO4J_BOLT_CONNECTION, auth=(NEO4J_USERNAME, NEO4J_PASSWORD), encrypted=False)
 
     initial_storyline = Storyline([
         team_graph_updater,
-        division_graph_updater,
         player_graph_updater,
         coaches_graph_updater,
         initial_properties_graph_updater
