@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_NBA_TEAMS = """
 LOAD CSV WITH HEADERS FROM "file:///teams.csv" AS row

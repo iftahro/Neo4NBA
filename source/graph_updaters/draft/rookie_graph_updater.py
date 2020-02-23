@@ -1,5 +1,5 @@
 from constants import CURRENT_YEAR
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 ADD_ROOKIE_LABEL = """
 MATCH (p:Player)-[r:PLAYED_AT]->(:Roster)

@@ -1,6 +1,6 @@
 from typing import List
 
-from core_objects.storyline import Storyline
+from source.core_objects.storyline import Storyline
 
 
 class HostedService:

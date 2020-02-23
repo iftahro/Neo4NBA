@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 ADD_AWARD_PROPERTY = """
 MATCH (m:Award)<-[w:WON_AWARD]-(a)

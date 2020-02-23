@@ -1,5 +1,5 @@
 from constants import PERSONAL_AWARDS
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_PERSONAL_AWARDS = """
 MERGE (a:Award{{name:"{name}", short:"{short}"}})

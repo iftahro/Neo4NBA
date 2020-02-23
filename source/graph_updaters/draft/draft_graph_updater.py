@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_DRAFT_PROPERTIES = """
 MATCH (p:Player{{name:name}})

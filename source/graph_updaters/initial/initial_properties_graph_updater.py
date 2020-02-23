@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 ADD_ROSTER_WINS_AND_LOSSES = """
 MATCH (r:Roster)

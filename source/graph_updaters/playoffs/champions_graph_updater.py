@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 ADD_CHAMPIONS_LABEL = """
 MATCH (r:Roster)-[:WON_SERIES]->(:Series:Playoffs{name: "NBA Finals"})

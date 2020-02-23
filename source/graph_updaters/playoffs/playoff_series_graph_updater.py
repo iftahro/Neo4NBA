@@ -1,4 +1,4 @@
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 ADD_PLAYOFF_SERIES = """
 LOAD CSV WITH HEADERS FROM "file:///playoff_series.csv" AS row

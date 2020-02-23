@@ -1,5 +1,5 @@
 from constants import YEARS_SUPPORTED
-from core_objects.graph_updater import GraphUpdater
+from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_PLAYERS_AND_ROSTERS = """
 LOAD CSV WITH HEADERS FROM "file:///players/{year}_players.csv" AS row
