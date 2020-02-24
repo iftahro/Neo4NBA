@@ -1,4 +1,4 @@
-from constants import PERSONAL_AWARDS
+from source.constants import PERSONAL_AWARDS
 from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_PERSONAL_AWARDS = """

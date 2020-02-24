@@ -1,4 +1,4 @@
-from constants import YEARS_SUPPORTED
+from source.constants import YEARS_SUPPORTED
 from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_COACHES = """

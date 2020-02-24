@@ -5,3 +5,6 @@ NEO4J_BOLT_ADDRESS = "bolt://localhost:7687"
 
 # General
 NEO4J_IMPORT_DIRECTORY = "D:\\Programming\\neo4j-community-4.0.0\\import\\"
+SHOULD_COPY_FILES_TO_SERVER = True
+
+LOGGING_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

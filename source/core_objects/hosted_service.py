@@ -4,8 +4,9 @@ from source.core_objects.storyline import Storyline
 
 
 class HostedService:
-    def __init__(self, storyline: List[Storyline]):
-        self.storyline = storyline
+    @property
+    def storyline(self) -> List[Storyline]:
+        return []
 
     def run(self, driver):
         for storyline in self.storyline:

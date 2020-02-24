@@ -1,4 +1,4 @@
-from constants import CURRENT_YEAR
+from source.constants import CURRENT_YEAR
 from source.core_objects.graph_updater import GraphUpdater
 
 ADD_ROOKIE_LABEL = """
