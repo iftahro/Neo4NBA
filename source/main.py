@@ -4,7 +4,7 @@ from neo4j import GraphDatabase
 from source.config import NEO4J_USERNAME, NEO4J_BOLT_ADDRESS, NEO4J_PASSWORD, SHOULD_COPY_FILES_TO_SERVER, \
     NEO4J_IMPORT_DIRECTORY
 from source.neo4nba_hosted_service import Neo4NBAHostedService
-from source.utils import configure_logging, copy_files_to_neo4j_server
+from source.setup import configure_logging, copy_files_to_neo4j_server
 
 
 def main():
