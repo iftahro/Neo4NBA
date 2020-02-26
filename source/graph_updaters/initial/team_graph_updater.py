@@ -1,3 +1,4 @@
+from source.constants import INVALID_TEAMS_LABELS
 from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_NBA_TEAMS = """
@@ -35,11 +36,9 @@ CALL apoc.create.setProperty([t], "division", [row.division]) YIELD node AS o
 RETURN o  
 """
 
-team_graph_updater = GraphUpdater("team_graph_updater", [
-    CREATE_NBA_TEAMS,
-    ADD_ADDITIONAL_LABELS.format(short="'BKN'", labels=['NJN', 'BRK']),
-    ADD_ADDITIONAL_LABELS.format(short="'NOP'", labels=['NOH']),
-    ADD_ADDITIONAL_LABELS.format(short="'PHX'", labels=['PHO']),
-    ADD_ADDITIONAL_LABELS.format(short="'CHA'", labels=['CHO']),
-    CREATE_DIVISIONS_AND_CONFERENCES
-])
+team_queries = [CREATE_NBA_TEAMS]
+for team, labels in INVALID_TEAMS_LABELS.items():
+    team_queries.append(ADD_ADDITIONAL_LABELS.format(short=team, labels=labels))
+team_queries.append(CREATE_DIVISIONS_AND_CONFERENCES)
+
+team_graph_updater = GraphUpdater("team_graph_updater", team_queries)
