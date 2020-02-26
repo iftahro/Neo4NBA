@@ -14,9 +14,9 @@ The graph contains data about:
 
 ## Requirements
 ### General
-Python 3.6
+Python 3.7.0 (https://www.python.org/downloads/)
 
-Local neo4j server 3.5.14
+Local neo4j server 3.5.14 (https://neo4j.com/download-center/#community)
 
 ### Packages
 neo4j 1.7.0
@@ -55,3 +55,4 @@ Thats it! Your'e good to go.
 https://www.basketball-reference.com/
 https://www.kaggle.com/pmp5kh/nba-draft-19802017
 https://hoopshype.com/2019/02/24/all-the-nicknames-in-nba-history/
+https://data.world/datasets/nba
