@@ -15,7 +15,7 @@ def configure_logging():
     logging.getLogger("neobolt").setLevel(logging.WARNING)
 
 
-def copy_files_to_neo4j_server(src, dst):
+def copy_tree(src, dst):
     if not os.path.exists(dst):
         os.makedirs(dst)
     names = os.listdir(src)
@@ -24,6 +24,6 @@ def copy_files_to_neo4j_server(src, dst):
         dst_name = os.path.join(dst, name)
 
         if os.path.isdir(src_name):
-            copy_files_to_neo4j_server(src_name, dst_name)
+            copy_tree(src_name, dst_name)
         else:
             shutil.copy2(src_name, dst_name)
