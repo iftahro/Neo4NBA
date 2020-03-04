@@ -8,6 +8,8 @@ from source.graph_updaters.awards.awards_graph_updater import awards_graph_updat
 from source.graph_updaters.draft.draft_graph_updater import draft_graph_updater
 from source.graph_updaters.draft.draft_properties_graph_updater import draft_properties_graph_updater
 from source.graph_updaters.draft.rookie_graph_updater import rookie_graph_updater
+from source.graph_updaters.games.game_properties_graph_updater import game_properties_graph_updater
+from source.graph_updaters.games.regular_season_game_graph_updater import regular_season_game_graph_updater
 from source.graph_updaters.initial.coach_graph_updater import coaches_graph_updater
 from source.graph_updaters.initial.initial_properties_graph_updater import initial_properties_graph_updater
 from source.graph_updaters.initial.player_graph_updater import player_graph_updater
@@ -42,9 +44,15 @@ class Neo4NBAHostedService(HostedService):
             rookie_graph_updater
         ])
 
+        games_storyline = Storyline([
+            regular_season_game_graph_updater,
+            game_properties_graph_updater
+        ])
+
         return [
             initial_storyline,
             playoffs_storyline,
             award_storyline,
-            draft_storyline
+            draft_storyline,
+            games_storyline
         ]

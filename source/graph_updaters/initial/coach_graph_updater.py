@@ -1,4 +1,4 @@
-from source.constants import YEARS_SUPPORTED
+from source.constants import SUPPORTED_YEARS
 from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_COACHES = """
@@ -19,7 +19,7 @@ SET r.`win%` = winning
 """
 
 coaches_queries = []
-for year in YEARS_SUPPORTED:
+for year in SUPPORTED_YEARS:
     coaches_queries.append(CREATE_COACHES.format(year=str(year)))
 
 coaches_graph_updater = GraphUpdater("coaches_graph_updater", coaches_queries)
