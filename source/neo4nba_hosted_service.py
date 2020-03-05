@@ -14,8 +14,8 @@ from source.graph_updaters.initial.coach_graph_updater import coaches_graph_upda
 from source.graph_updaters.initial.initial_properties_graph_updater import initial_properties_graph_updater
 from source.graph_updaters.initial.player_graph_updater import player_graph_updater
 from source.graph_updaters.initial.team_graph_updater import team_graph_updater
-from source.graph_updaters.playoffs.champion_graph_updater import champion_graph_updater
-from source.graph_updaters.playoffs.playoff_series_graph_updater import playoff_series_graph_updater
+from source.graph_updaters.playoff.champion_graph_updater import champion_graph_updater
+from source.graph_updaters.playoff.playoff_series_graph_updater import playoff_series_graph_updater
 
 
 class Neo4NBAHostedService(HostedService):
@@ -28,7 +28,7 @@ class Neo4NBAHostedService(HostedService):
             initial_properties_graph_updater
         ])
 
-        playoffs_storyline = Storyline([
+        playoff_storyline = Storyline([
             playoff_series_graph_updater,
             champion_graph_updater
         ])
@@ -51,7 +51,7 @@ class Neo4NBAHostedService(HostedService):
 
         return [
             initial_storyline,
-            playoffs_storyline,
+            playoff_storyline,
             award_storyline,
             draft_storyline,
             games_storyline
