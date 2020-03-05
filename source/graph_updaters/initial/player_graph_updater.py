@@ -1,4 +1,4 @@
-from source.constants import YEARS_SUPPORTED
+from source.constants import SUPPORTED_YEARS
 from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_PLAYERS_AND_ROSTERS = """
@@ -23,7 +23,7 @@ RETURN node
 """
 
 players_queries = []
-for year in YEARS_SUPPORTED:
+for year in SUPPORTED_YEARS:
     players_queries.append(CREATE_PLAYERS_AND_ROSTERS.format(year=str(year)))
 
 player_graph_updater = GraphUpdater("player_graph_updater",
