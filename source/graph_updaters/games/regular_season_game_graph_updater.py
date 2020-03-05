@@ -42,4 +42,4 @@ for year in SUPPORTED_YEARS:
     queries.append(CREATE_HOME_AWAY_GAMES.format(year=year))
     queries.append(DELETE_NEW_LABEL)
 
-regular_season_game_graph_updater = GraphUpdater("regular_season_game_graph_updater", queries)
+regular_season_game_graph_updater = GraphUpdater("regular_season_game", queries)

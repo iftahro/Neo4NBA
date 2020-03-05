@@ -7,7 +7,7 @@ class Storyline:
 
     def action(self, driver):
         for graph_updater in self.graph_updaters:
-            logging.debug(f"Started updating {graph_updater.name}")
+            logging.debug(f"Started updating {graph_updater.name} layer")
             graph_updater.update_graph(driver)
-            logging.debug(f"Finished updating {graph_updater.name}")
+            logging.debug(f"Finished updating {graph_updater.name} layer")
 

@@ -38,7 +38,7 @@ CALL apoc.do.when(s.games = 4,
 RETURN value
 """
 
-playoff_series_graph_updater = GraphUpdater("playoff_series_graph_updater", [
+playoff_series_graph_updater = GraphUpdater("playoff_series", [
     ADD_PLAYOFF_SERIES,
     ADD_FINAL_SCORE,
     ADD_IS_SWEEP

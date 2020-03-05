@@ -48,7 +48,7 @@ MATCH (p:Player{name:row.name})
 SET p.nickname = row.nick
 """
 
-initial_properties_graph_updater = GraphUpdater("initial_properties_graph_updater", [
+initial_properties_graph_updater = GraphUpdater("initial_properties", [
     ADD_ROSTER_WINS_AND_LOSSES,
     ADD_PLAYER_PROPERTIES,
     ADD_COACH_PROPERTIES,

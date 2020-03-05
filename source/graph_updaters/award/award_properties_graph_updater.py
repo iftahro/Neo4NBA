@@ -11,6 +11,6 @@ CALL apoc.create.setProperty([a], award_name, v) YIELD node
 RETURN node
 """
 
-award_properties_graph_updater = GraphUpdater("award_properties_graph_updater", [
+award_properties_graph_updater = GraphUpdater("award_properties", [
     ADD_AWARD_PROPERTY
 ])

@@ -26,5 +26,5 @@ players_queries = []
 for year in SUPPORTED_YEARS:
     players_queries.append(CREATE_PLAYERS_AND_ROSTERS.format(year=str(year)))
 
-player_graph_updater = GraphUpdater("player_graph_updater",
+player_graph_updater = GraphUpdater("player",
                                     players_queries)

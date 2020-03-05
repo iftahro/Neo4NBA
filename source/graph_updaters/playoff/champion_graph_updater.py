@@ -18,7 +18,7 @@ WITH a, COLLECT(r.year) AS years
 SET a.championships = years
 """
 
-champion_graph_updater = GraphUpdater("champion_graph_updater", [
+champion_graph_updater = GraphUpdater("champion", [
     ADD_CHAMPIONS_LABEL,
     ADD_TEAM_CHAMPIONS,
     ADD_PLAYER_COACH_CHAMPIONS

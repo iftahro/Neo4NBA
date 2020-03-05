@@ -18,7 +18,7 @@ LOAD CSV WITH HEADERS FROM "file:///draft/{year}_draft.csv" AS row
 WITH row, row.Player as name
 """ + CREATE_DRAFT_PROPERTIES
 
-draft_graph_updater = GraphUpdater("draft_graph_updater", [
+draft_graph_updater = GraphUpdater("draft", [
     ADD_OLD_DRAFTS.format(year="row.year", pick="pick"),
     ADD_SPECIFIC_DRAFT.format(year="1990", pick="Pk"),
     ADD_SPECIFIC_DRAFT.format(year="1992", pick="Pk"),

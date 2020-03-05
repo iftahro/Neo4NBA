@@ -41,4 +41,4 @@ for team, labels in INVALID_TEAMS_LABELS.items():
     team_queries.append(ADD_ADDITIONAL_LABELS.format(short=team, labels=labels))
 team_queries.append(CREATE_DIVISIONS_AND_CONFERENCES)
 
-team_graph_updater = GraphUpdater("team_graph_updater", team_queries)
+team_graph_updater = GraphUpdater("team", team_queries)
