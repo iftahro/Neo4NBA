@@ -22,7 +22,7 @@ RETURN node
 
 CREATE_DIVISIONS_AND_CONFERENCES = """
 LOAD CSV WITH HEADERS FROM "file:///divisions.csv" AS row
-MERGE (c:Conference{name:row.cname})
+MERGE (c:Conference{name:row.conference})
 MERGE (d:Division{name:row.division})-[:FROM_CONFERENCE]->(c)
 
 WITH row, c, d

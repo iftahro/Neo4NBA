@@ -10,14 +10,14 @@ away_team_score:toInteger(row.away_team_score) ,home_team_score:toInteger(row.ho
 """
 
 CREATE_HOME_AWAY_GAMES = """
-MATCH (n:Game:New)
+MATCH (n:Game:RegularSeason:New)
 MATCH (home_team:Roster{{year:{year}}}), (away_team:Roster{{year:{year}}})
 WHERE toLower(home_team.team) = toLower(n.home_team) AND toLower(away_team.team) = toLower(n.away_team)
 SET n.home_team = home_team.team, n.away_team = away_team.team
 
 WITH home_team, away_team, n
-MERGE (home_team)-[:PLAYED]->(g1:Home:Games:RegularSeason{{team:home_team.team, year:home_team.year}})
-MERGE (away_team)-[:PLAYED]->(g2:Away:Games:RegularSeason{{team:away_team.team, year:away_team.year}})
+MERGE (home_team)-[:HOSTED]->(g1:Home:Games:RegularSeason{{team:home_team.team, year:home_team.year}})
+MERGE (away_team)-[:VISITED]->(g2:Road:Games:RegularSeason{{team:away_team.team, year:away_team.year}})
 
 WITH g1, g2, n
 CALL apoc.do.when(n.home_team_score > n.away_team_score,
