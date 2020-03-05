@@ -2,7 +2,7 @@ from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_DRAFT_PROPERTIES = """
 MATCH (p:Player{{name:name}})
-CALL apoc.create.setProperties([p],["draft_pick","year_drafted","pre_draft_team"],
+CALL apoc.create.setProperties([p],["draft_pick","draft_class","pre_draft_team"],
 [toInteger(row.{pick}),toInteger({year}), row.Pre]) YIELD node
 RETURN node
 """
