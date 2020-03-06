@@ -7,6 +7,6 @@ WHERE r.year = 2020 AND p.seasons_played = 1
 SET p:Rookie
 """
 
-rookie_graph_updater = GraphUpdater("rookie_graph_updater", [
+rookie_graph_updater = GraphUpdater("rookie", [
     ADD_ROOKIE_LABEL.format(year=str(CURRENT_YEAR - 1))
 ])

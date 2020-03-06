@@ -23,11 +23,11 @@ RETURN node
 CREATE_DIVISIONS_AND_CONFERENCES = """
 LOAD CSV WITH HEADERS FROM "file:///divisions.csv" AS row
 MERGE (c:Conference{name:row.conference})
-MERGE (d:Division{name:row.division})-[:FROM_CONFERENCE]->(c)
+MERGE (d:Division{name:row.division})-[:FROM]->(c)
 
 WITH row, c, d
 MATCH (t:Team{name:row.name})
-MERGE (t)-[:FROM_DIVISION]->(d)
+MERGE (t)-[:FROM]->(d)
 
 WITH row, c, d, t
 CALL apoc.create.addLabels([t,d,c],[row.conference]) YIELD node AS m
@@ -41,4 +41,4 @@ for team, labels in INVALID_TEAMS_LABELS.items():
     team_queries.append(ADD_ADDITIONAL_LABELS.format(short=team, labels=labels))
 team_queries.append(CREATE_DIVISIONS_AND_CONFERENCES)
 
-team_graph_updater = GraphUpdater("team_graph_updater", team_queries)
+team_graph_updater = GraphUpdater("team", team_queries)

@@ -22,4 +22,4 @@ coaches_queries = []
 for year in SUPPORTED_YEARS:
     coaches_queries.append(CREATE_COACHES.format(year=str(year)))
 
-coaches_graph_updater = GraphUpdater("coaches_graph_updater", coaches_queries)
+coach_graph_updater = GraphUpdater("coach", coaches_queries)

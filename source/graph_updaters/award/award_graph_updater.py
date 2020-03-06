@@ -34,4 +34,4 @@ for key, value in PERSONAL_AWARDS.items():
     award_queries.append(CREATE_PERSONAL_AWARDS.format(name=key, short=value))
 award_queries.append(CREATE_COACH_AWARD)
 
-awards_graph_updater = GraphUpdater("awards_graph_updater", award_queries)
+award_graph_updater = GraphUpdater("award", award_queries)

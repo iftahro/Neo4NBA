@@ -2,7 +2,7 @@ from source.core_objects.graph_updater import GraphUpdater
 
 CREATE_DRAFT_PROPERTIES = """
 MATCH (p:Player{{name:name}})
-CALL apoc.create.setProperties([p],["draft_pick","year_drafted","pre_draft_team"],
+CALL apoc.create.setProperties([p],["draft_pick","draft_class","pre_draft_team"],
 [toInteger(row.{pick}),toInteger({year}), row.Pre]) YIELD node
 RETURN node
 """
@@ -18,7 +18,7 @@ LOAD CSV WITH HEADERS FROM "file:///draft/{year}_draft.csv" AS row
 WITH row, row.Player as name
 """ + CREATE_DRAFT_PROPERTIES
 
-draft_graph_updater = GraphUpdater("draft_graph_updater", [
+draft_graph_updater = GraphUpdater("draft", [
     ADD_OLD_DRAFTS.format(year="row.year", pick="pick"),
     ADD_SPECIFIC_DRAFT.format(year="1990", pick="Pk"),
     ADD_SPECIFIC_DRAFT.format(year="1992", pick="Pk"),

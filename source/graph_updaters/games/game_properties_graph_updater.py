@@ -38,7 +38,7 @@ WHERE EXISTS(r.`{prop}`) AND r.`{prop}` > {min}
 SET r:{character}
 """
 
-game_properties_graph_updater = GraphUpdater("game_properties_graph_updater", [
+game_properties_graph_updater = GraphUpdater("game_properties", [
     SET_GAME_WINNER_AND_FINAL_SCORE,
     ADD_GAMES_WINS_LOSSES.format(relation='WON_GAME', prop='wins'),
     ADD_GAMES_WINS_LOSSES.format(relation='LOST_GAME', prop='losses'),
