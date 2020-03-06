@@ -11,7 +11,8 @@ MERGE (w)-[a:WON_SERIES]->(s:Series:Playoff{round:row.Series})<-[b:LOST_SERIES]-
 ON CREATE SET s += {
 date:row.Date,
 winner:winner,
-loser:loser},
+loser:loser,
+conference:row.Conference},
 a.opponent = loser, b.opponent = winner
 
 WITH s, row, a, b 
@@ -38,7 +39,7 @@ CALL apoc.do.when(s.games = 4,
 RETURN value
 """
 
-playoff_series_graph_updater = GraphUpdater("playoff_series", [
+playoff_series_graph_updater = GraphUpdater("playoff series", [
     ADD_PLAYOFF_SERIES,
     ADD_FINAL_SCORE,
     ADD_IS_SWEEP
