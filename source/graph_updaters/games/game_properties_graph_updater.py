@@ -38,7 +38,19 @@ WHERE EXISTS(r.`{prop}`) AND r.`{prop}` > {min}
 SET r:{character}
 """
 
-game_properties_graph_updater = GraphUpdater("game_properties", [
+ADD_PLAYOFF_GAME_NUMBER = """
+MATCH (p:Playoff:Series)
+WITH p
+MATCH (p)<-[:OF_SERIES]-(g:Game:Playoff)
+WITH p, g
+ORDER BY g.date
+WITH COLLECT(g) AS games, p
+UNWIND games AS game
+WITH apoc.coll.indexOf(games, game) + 1 as number, game, p
+SET game.game_number = number
+"""
+
+game_properties_graph_updater = GraphUpdater("game properties", [
     SET_GAME_WINNER_AND_FINAL_SCORE,
     ADD_GAMES_WINS_LOSSES.format(relation='WON_GAME', prop='wins'),
     ADD_GAMES_WINS_LOSSES.format(relation='LOST_GAME', prop='losses'),
@@ -47,5 +59,6 @@ game_properties_graph_updater = GraphUpdater("game_properties", [
     ADD_ROSTER_HOME_ROAD_STATS.format(game_label='Road', game_type='road'),
     ADD_ROSTER_HOME_ROAD_STATS.format(game_label='Home', game_type='home'),
     ADD_ROSTER_CHARACTER.format(prop='home_win%', min='0.85', character='Watchdogs'),
-    ADD_ROSTER_CHARACTER.format(prop='road_win%', min='0.7', character='RoadHunters')
+    ADD_ROSTER_CHARACTER.format(prop='road_win%', min='0.7', character='RoadHunters'),
+    ADD_PLAYOFF_GAME_NUMBER
 ])
