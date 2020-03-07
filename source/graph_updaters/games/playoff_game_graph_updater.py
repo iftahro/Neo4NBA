@@ -8,8 +8,8 @@ MATCH (r1:Roster{{year:{year}}}), (r2:Roster{{year:{year}}})
 WHERE toUpper(r1.team) = row.home_team AND toUpper(r2.team) = row.away_team
 MATCH (r1)--(s:Series:Playoff)--(r2)
 
-WITH apoc.date.parse(row.start_time, 'ms', 'yyyy-MM-dd HH:mm:ss') AS ms, row, r1, r2, s
-MERGE (g:Game:Playoff{{date:datetime({{epochMillis:ms}}), away_team:r2.team, home_team:r1.team,
+WITH date(row.start_time) AS date, row, r1, r2, s
+MERGE (g:Game:Playoff{{date:date, away_team:r2.team, home_team:r1.team,
 away_team_score:toInteger(row.away_team_score) ,home_team_score:toInteger(row.home_team_score)}})
 MERGE (g)-[:OF_SERIES]->(s)
 SET g.final_score = g.home_team_score + '-' + g.away_team_score

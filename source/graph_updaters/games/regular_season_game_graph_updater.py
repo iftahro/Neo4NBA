@@ -4,8 +4,8 @@ from source.core_objects.graph_updater import GraphUpdater
 CREATE_ALL_GAMES = """
 LOAD CSV WITH HEADERS FROM "file:///games/{year}_games.csv" AS row
 WITH row LIMIT {games}
-WITH apoc.date.parse(row.start_time, 'ms', 'yyyy-MM-dd HH:mm:ss') AS ms, row
-MERGE (g:Game:RegularSeason:New{{date:datetime({{epochMillis:ms}}), away_team:row.away_team, home_team:row.home_team,
+WITH date(row.start_time) AS date, row
+MERGE (g:Game:RegularSeason:New{{date:date, away_team:row.away_team, home_team:row.home_team,
 away_team_score:toInteger(row.away_team_score) ,home_team_score:toInteger(row.home_team_score)}})
 """
 
