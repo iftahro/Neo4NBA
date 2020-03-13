@@ -8,7 +8,7 @@ RETURN node
 """
 
 ADD_OLD_DRAFTS = """
-LOAD CSV WITH HEADERS FROM "file:///draft/1990_2017_drafts.csv" AS row
+LOAD CSV WITH HEADERS FROM "file:///draft/1993_2017_drafts.csv" AS row
 WITH SPLIT(row.player, ",") AS names, row
 WITH names[1] + " " + names[0] AS name, row
 """ + CREATE_DRAFT_PROPERTIES
@@ -19,9 +19,8 @@ WITH row, row.Player as name
 """ + CREATE_DRAFT_PROPERTIES
 
 draft_graph_updater = GraphUpdater("draft", [
-    ADD_OLD_DRAFTS.format(year="row.year", pick="pick"),
-    ADD_SPECIFIC_DRAFT.format(year="1990", pick="Pk"),
     ADD_SPECIFIC_DRAFT.format(year="1992", pick="Pk"),
+    ADD_OLD_DRAFTS.format(year="row.year", pick="pick"),
     ADD_SPECIFIC_DRAFT.format(year="2018", pick="Pk"),
     ADD_SPECIFIC_DRAFT.format(year="2019", pick="Pk")
 ])
