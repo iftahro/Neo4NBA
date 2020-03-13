@@ -34,7 +34,7 @@ ADD_IS_SWEEP = """
 MATCH (s:Series:Playoff)
 
 CALL apoc.do.when(s.games = 4,
-'SET s.is_sweep=true',
+'SET s.is_sweep=true, s:Sweep',
 'SET s.is_sweep=false',{s:s}) YIELD value
 RETURN value
 """
