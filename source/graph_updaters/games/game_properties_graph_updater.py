@@ -59,6 +59,14 @@ WITH apoc.coll.indexOf(games, game) + 1 as number, game, p
 SET game.game_number = number
 """
 
+ADD_PLAYOFF_SERIES_DATE = """
+MATCH (s:Playoff:Series)<-[:OF_SERIES]-(g:Game:Playoff)
+WITH g, s ORDER BY g.game_number
+WITH COLLECT(g) AS games, s
+WITH games[0] AS p, games[-1] AS pp, s
+SET s.date =  p.date.day + '.' + p.date.month + '-' + pp.date.day + '.' + pp.date.month, s.year = p.date.year
+"""
+
 game_properties_graph_updater = GraphUpdater("game properties", [
     SET_GAMES_TEAM_LABEL,
     SET_GAME_WINNER_AND_FINAL_SCORE,
@@ -70,5 +78,6 @@ game_properties_graph_updater = GraphUpdater("game properties", [
     ADD_ROSTER_HOME_ROAD_STATS.format(game_label='Home', game_type='home'),
     ADD_ROSTER_CHARACTER.format(prop='home_win%', min='0.85', character='HomeGuards'),
     ADD_ROSTER_CHARACTER.format(prop='road_win%', min='0.7', character='RoadHunters'),
-    ADD_PLAYOFF_GAME_NUMBER
+    ADD_PLAYOFF_GAME_NUMBER,
+    ADD_PLAYOFF_SERIES_DATE
 ])
