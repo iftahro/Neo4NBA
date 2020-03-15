@@ -10,7 +10,7 @@ class HostedService:
         return []
 
     def run(self, driver):
-        logging.info("Starting updating the graph!")
+        logging.info("Started updating the graph!")
         for storyline in self.storyline:
             storyline.action(driver)
         logging.info("Finished updating the graph!")

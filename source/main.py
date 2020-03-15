@@ -17,7 +17,7 @@ def main():
 
     neo4j_driver = GraphDatabase.driver(NEO4J_BOLT_ADDRESS, auth=(NEO4J_USERNAME, NEO4J_PASSWORD), encrypted=False)
     if SHOULD_RESET_GRAPH:
-        logging.info("Resetting neo4j db")
+        logging.info("Resetting neo4j db (deleting all nodes and relations)")
         reset_neo4j_db(neo4j_driver)
 
     hosted_service = Neo4NBAHostedService()
