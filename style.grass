@@ -1,0 +1,323 @@
+﻿node {
+  diameter: 50px;
+  color: #A5ABB6;
+  border-color: #9AA1AC;
+  border-width: 2px;
+  text-color-internal: #FFFFFF;
+  font-size: 10px;
+}
+relationship {
+  color: #A5ABB6;
+  shaft-width: 1px;
+  font-size: 8px;
+  padding: 3px;
+  text-color-external: #000000;
+  text-color-internal: #FFFFFF;
+  caption: "<type>";
+}
+node.* {
+  color: #C990C0;
+  border-color: #b261a5;
+  text-color-internal: #FFFFFF;
+  defaultCaption: "<id>";
+}
+node.Greeting {
+  color: #F16667;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+  caption: "{message}";
+}
+node.Player {
+  color: #D9C8AE;
+  border-color: #c0a378;
+  text-color-internal: #604A0E;
+  caption: "{name}";
+  diameter: 50px;
+}
+node.Team {
+  color: #4C8EDA;
+  border-color: #2870c2;
+  text-color-internal: #FFFFFF;
+  defaultCaption: "<id>";
+  caption: "{name}";
+  diameter: 77.5px;
+}
+node.Roster {
+  color: #FFC454;
+  border-color: #d7a013;
+  text-color-internal: #604A0E;
+  defaultCaption: "<id>";
+  diameter: 68.5px;
+  font-size: 9.6px;
+  caption: "{year} {team}";
+}
+node.Coach {
+  caption: "{name}";
+  color: #8DCC93;
+  border-color: #5db665;
+  text-color-internal: #604A0E;
+}
+node.2016 {
+  color: #FFC454;
+  border-color: #d7a013;
+  text-color-internal: #604A0E;
+  defaultCaption: "<id>";
+  caption: "{year}";
+}
+node.Award {
+  defaultCaption: "<id>";
+  color: #57C7E3;
+  border-color: #23b3d7;
+  text-color-internal: #FFFFFF;
+  caption: "{name}";
+  diameter: 65px;
+}
+node.Conference {
+  caption: "{name}ern Conference";
+  color: #F16667;
+  border-color: #eb2728;
+  text-color-internal: #FFFFFF;
+  diameter: 63.5px;
+}
+node.Division {
+  caption: "{name} Division";
+  color: #ECB5C9;
+  border-color: #da7298;
+  text-color-internal: #604A0E;
+  diameter: 58.5px;
+}
+node.West {
+  defaultCaption: "<id>";
+}
+node.Series {
+  defaultCaption: "<id>";
+  color: #F79767;
+  border-color: #f36924;
+  text-color-internal: #FFFFFF;
+  diameter: 60px;
+  caption: "{year} {round}";
+}
+node.Games {
+  defaultCaption: "<id>";
+  color: #DA7194;
+  border-color: #cc3c6c;
+  text-color-internal: #FFFFFF;
+  diameter: 60px;
+}
+node.Game {
+  caption: "{final_score}";
+  color: #C990C0;
+  border-color: #b261a5;
+  text-color-internal: #FFFFFF;
+  diameter: 38px;
+  font-size: 9px;
+}
+node.Road.Games {
+  caption: "{year} Road Games";
+}
+node.Home.Games {
+  caption: "{year} Home Games";
+}
+node.Game.Playoff {
+  caption: "{game_number}         {winner}";
+  diameter: 55px;
+  font-size: 10px;
+}
+node.East {
+  defaultCaption: "<id>";
+}
+node.DEN {
+  defaultCaption: "<id>";
+}
+node.MIN {
+  defaultCaption: "<id>";
+}
+node.POR {
+  defaultCaption: "<id>";
+}
+node.UTA {
+  defaultCaption: "<id>";
+}
+node.OKC {
+  defaultCaption: "<id>";
+}
+node.Home {
+  defaultCaption: "<id>";
+}
+node.RegularSeason {
+  defaultCaption: "<id>";
+}
+node.Road {
+  defaultCaption: "<id>";
+}
+node.Loyal {
+  defaultCaption: "<id>";
+}
+node.Undrafted {
+  defaultCaption: "<id>";
+}
+node.Playoff {
+  defaultCaption: "<id>";
+}
+node.DET {
+  defaultCaption: "<id>";
+}
+node.Watchdogs {
+  defaultCaption: "<id>";
+}
+node.SAS {
+  defaultCaption: "<id>";
+}
+node.SecondPick {
+  defaultCaption: "<id>";
+}
+node.ThirdPick {
+  defaultCaption: "<id>";
+}
+node.HOU {
+  defaultCaption: "<id>";
+}
+node.RoadHunters {
+  defaultCaption: "<id>";
+}
+node.Rookie {
+  defaultCaption: "<id>";
+}
+node.GSW {
+  defaultCaption: "<id>";
+}
+node.Champions {
+  defaultCaption: "<id>";
+}
+node.FirstPick {
+  defaultCaption: "<id>";
+}
+node.TOR {
+  defaultCaption: "<id>";
+}
+node.CLE {
+  defaultCaption: "<id>";
+}
+node.MEM {
+  defaultCaption: "<id>";
+}
+node.MIL {
+  defaultCaption: "<id>";
+}
+node.BKN {
+  defaultCaption: "<id>";
+}
+node.NJN {
+  defaultCaption: "<id>";
+}
+node.BRK {
+  defaultCaption: "<id>";
+}
+node.PHI {
+  defaultCaption: "<id>";
+}
+node.IND {
+  defaultCaption: "<id>";
+}
+node.PHX {
+  defaultCaption: "<id>";
+}
+node.PHO {
+  defaultCaption: "<id>";
+}
+node.LAC {
+  defaultCaption: "<id>";
+}
+node.WAS {
+  defaultCaption: "<id>";
+}
+node.LAL {
+  defaultCaption: "<id>";
+}
+node.NOH {
+  defaultCaption: "<id>";
+}
+node.NOP {
+  defaultCaption: "<id>";
+}
+node.NYK {
+  defaultCaption: "<id>";
+}
+node.CHI {
+  defaultCaption: "<id>";
+}
+node.ORL {
+  defaultCaption: "<id>";
+}
+node.ATL {
+  defaultCaption: "<id>";
+}
+node.CHA {
+  defaultCaption: "<id>";
+}
+node.CHO {
+  defaultCaption: "<id>";
+}
+node.Database {
+  caption: "{name}";
+}
+node.Message {
+  caption: "{name}";
+}
+node.MIA {
+  defaultCaption: "<id>";
+}
+node.SAC {
+  defaultCaption: "<id>";
+}
+node.DAL {
+  defaultCaption: "<id>";
+}
+node.BOS {
+  defaultCaption: "<id>";
+}
+node.Contest {
+  caption: "{year} {name}";
+  text-color-internal: #FFFFFF;
+  font-size: 9px;
+}
+node.All-Star {
+  defaultCaption: "<id>";
+  color: #569480;
+  border-color: #447666;
+  text-color-internal: #FFFFFF;
+}
+node.HomeGuards {
+  defaultCaption: "<id>";
+}
+node.ll {
+  defaultCaption: "<id>";
+}
+node.ROY {
+  defaultCaption: "<id>";
+}
+node.FMVP {
+  defaultCaption: "<id>";
+}
+node.MVP {
+  defaultCaption: "<id>";
+}
+node.AMVP {
+  defaultCaption: "<id>";
+}
+node.DPOY {
+  defaultCaption: "<id>";
+}
+node.SMOY {
+  defaultCaption: "<id>";
+}
+node.MIP {
+  defaultCaption: "<id>";
+}
+node.Sweep {
+  defaultCaption: "<id>";
+}
+node.PreDraft {
+  diameter: 55px;
+  defaultCaption: "<id>";
+}
