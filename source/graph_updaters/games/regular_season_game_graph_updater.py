@@ -21,8 +21,8 @@ MERGE (away_team)-[:VISITED]->(g2:Road:Games:RegularSeason{{team:away_team.team,
 
 WITH g1, g2, n
 CALL apoc.do.when(n.home_team_score > n.away_team_score,
-'MERGE (g1)-[:WON_GAME]->(n)<-[:LOST_GAME]-(g2)',
-'MERGE (g1)-[:LOST_GAME]->(n)<-[:WON_GAME]-(g2)',
+'MERGE (g1)-[:WON]->(n)<-[:LOST]-(g2)',
+'MERGE (g1)-[:LOST]->(n)<-[:WON]-(g2)',
 {{g1:g1, g2:g2, n:n}}) 
 YIELD value AS v RETURN NULL
 """

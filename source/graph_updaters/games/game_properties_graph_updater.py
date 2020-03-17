@@ -1,7 +1,16 @@
 from source.core_objects.graph_updater import GraphUpdater
 
+SET_GAMES_TEAM_LABEL = """
+MATCH (r:Roster)--(g:Games)
+WITH LABELS(r) as l, g
+UNWIND l as v
+WITH v, g
+WHERE SIZE(v) = 3
+CALL apoc.create.addLabels([g], [v]) yield node RETURN NULL
+"""
+
 SET_GAME_WINNER_AND_FINAL_SCORE = """
-MATCH (r1)-[:WON_GAME]->(g:Game)<-[:LOST_GAME]-(r2)
+MATCH (r1)-[:WON]->(g:Game)<-[:LOST]-(r2)
 SET g.winner = r1.team, g.loser = r2.team
 
 WITH g, g.home_team_score + '-' + g.away_team_score AS final_score
@@ -50,15 +59,25 @@ WITH apoc.coll.indexOf(games, game) + 1 as number, game, p
 SET game.game_number = number
 """
 
+ADD_PLAYOFF_SERIES_DATE = """
+MATCH (s:Playoff:Series)<-[:OF_SERIES]-(g:Game:Playoff)
+WITH g, s ORDER BY g.game_number
+WITH COLLECT(g) AS games, s
+WITH games[0] AS p, games[-1] AS pp, s
+SET s.date =  p.date.day + '.' + p.date.month + '-' + pp.date.day + '.' + pp.date.month, s.year = p.date.year
+"""
+
 game_properties_graph_updater = GraphUpdater("game properties", [
+    SET_GAMES_TEAM_LABEL,
     SET_GAME_WINNER_AND_FINAL_SCORE,
-    ADD_GAMES_WINS_LOSSES.format(relation='WON_GAME', prop='wins'),
-    ADD_GAMES_WINS_LOSSES.format(relation='LOST_GAME', prop='losses'),
+    ADD_GAMES_WINS_LOSSES.format(relation='WON', prop='wins'),
+    ADD_GAMES_WINS_LOSSES.format(relation='LOST', prop='losses'),
     ADD_GAMES_FINAL_SCORE,
     ADD_GAMES_WIN_PERCENTAGE,
     ADD_ROSTER_HOME_ROAD_STATS.format(game_label='Road', game_type='road'),
     ADD_ROSTER_HOME_ROAD_STATS.format(game_label='Home', game_type='home'),
-    ADD_ROSTER_CHARACTER.format(prop='home_win%', min='0.85', character='Watchdogs'),
+    ADD_ROSTER_CHARACTER.format(prop='home_win%', min='0.85', character='HomeGuards'),
     ADD_ROSTER_CHARACTER.format(prop='road_win%', min='0.7', character='RoadHunters'),
-    ADD_PLAYOFF_GAME_NUMBER
+    ADD_PLAYOFF_GAME_NUMBER,
+    ADD_PLAYOFF_SERIES_DATE
 ])
