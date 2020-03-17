@@ -21,11 +21,14 @@ CREATE_COACH_AWARD = """
 MERGE (a:Award{name:"Coach of the Year", short:"COY"})
 WITH a
 LOAD CSV WITH HEADERS FROM "file:///awards/COY.csv" AS row
-MATCH (c:Coach{name:row.Coach})
+MATCH (c:Coach{name:row.Coach}), (t:Team)
+WHERE row.Tm IN LABELS(t)
+
+WITH t, c, a, row
 MERGE (c)-[w:WON{year:toInteger(row.Season)}]->(a)
 
 ON CREATE SET w += { games:toInteger(row.G), wins:toInteger(row.W), losses:toInteger(row.L), 
-`win%`:toFloat(row.`W/LP`)}
+`win%`:toFloat(row.`W/LP`), team:t.name}
 """
 
 award_queries = []
