@@ -1,5 +1,10 @@
-# Neo4NBA
-Neo4NBA is a neo4j graph db of the NBA league over the past decade (2010-20). 
+<p align="center">
+  <img src="logo.png">
+</p>
+
+# 
+**Neo4NBA** is a neo4j graph db of the NBA basketball league over the past decade (2010-20).
+
 The graph contains data about:
 
 -	Teams and divisions
@@ -23,7 +28,7 @@ Local neo4j server 3.5.14 (https://neo4j.com/download-center/#community)
 ### Packages
 neo4j 1.7.0
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install neo4j.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install neo4j package
 
 ```bash
 pip install neo4j
@@ -46,11 +51,17 @@ the and set the *should_copy* flag *True*
 NEO4J_IMPORT_DIRECTORY = "import_dir_path"
 SHOULD_COPY_FILES_TO_SERVER = True
 ```
-### apoc.jar plugin
-The neo4j query language (cypher) supports a user-defined procedures and functions library called 'apoc'.
-Some of the graph updaters are using this package, and in order for them to work you will need to copy the apoc.jar file into your local neo4j server 'plugins' folder
+### APOC library
+The neo4j query language (cypher) supports a user-defined procedures and functions library called 'apoc', 
+which is used by some of the graph updaters.
+
+In order for them to work you will need to move the attached 'apoc.jar' file into your local neo4j server 'plugins' folder
 ### Neo4j browser style
+Drag the attached 'style.grass' file to your neo4j browser and release for a more visual and clear graph
 ### DB dump file (optional)
+For those of you that already familiar with neo4j, you can skip the graph update by the overlay method (one by one),
+and load directly the attached 'neo4nba.dump' file into your neo4j server
+
 Thats it! Your'e good to go.
 
 ## To Be Added
