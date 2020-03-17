@@ -6,11 +6,13 @@ The graph contains data about:
 -	All players played
 - Yearly rosters
 -	Coaches
--	Regular season stats
--	Draft picks (also rookies and undrafted)
+-	Player regular season stats
+-	Draft picks (and undrafteds)
+- Pre draft teams (e.g college, high-school, euroleague)
 -	Personal awards (MVP, MIP etc.)
 -	Playoff series
 -	Players nicknames
+- Regular season/ playoff games (including date and score)
 
 ## Requirements
 ### General
@@ -44,12 +46,18 @@ the and set the *should_copy* flag *True*
 NEO4J_IMPORT_DIRECTORY = "import_dir_path"
 SHOULD_COPY_FILES_TO_SERVER = True
 ```
+### apoc.jar plugin
+The neo4j query language (cypher) supports a user-defined procedures and functions library called 'apoc'.
+Some of the graph updaters are using this package, and in order for them to work you will need to copy the apoc.jar file into your local neo4j server 'plugins' folder
+### Neo4j browser style
+### DB dump file (optional)
 Thats it! Your'e good to go.
 
 ## To Be Added
 
 - NBA2K game ratings
--	Regular season games
+- Hall of Famers
+- All-Star weekends
 
 ## Resources
 https://www.basketball-reference.com/
