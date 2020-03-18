@@ -2,7 +2,7 @@
   <img src="logo.png">
 </p>
 
-# 
+## About
 **Neo4NBA** is a neo4j graph db of the NBA basketball league over the past decade (2010-20).
 
 The graph contains data about:
