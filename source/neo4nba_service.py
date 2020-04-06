@@ -1,7 +1,7 @@
 from typing import List
 
 from source.core_objects.storyline import Storyline
-from source.core_objects.hosted_service import HostedService
+from source.core_objects.service_base import ServiceBase
 
 from source.graph_updaters.award.award_properties_graph_updater import award_properties_graph_updater
 from source.graph_updaters.award.award_graph_updater import award_graph_updater
@@ -19,9 +19,8 @@ from source.graph_updaters.playoff.champion_graph_updater import champion_graph_
 from source.graph_updaters.playoff.playoff_series_graph_updater import playoff_series_graph_updater
 
 
-class Neo4NBAHostedService(HostedService):
-    @property
-    def storyline(self) -> List[Storyline]:
+class Neo4NBAService(ServiceBase):
+    def _initialize_storyline(self) -> List[Storyline]:
         initial_storyline = Storyline([
             team_graph_updater,
             player_graph_updater,
