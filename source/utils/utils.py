@@ -6,6 +6,9 @@ from source.config import LOGGING_FORMAT
 
 
 def configure_logging(log_level):
+    """
+    Configures the system logs
+    """
     logging.basicConfig(
         format=LOGGING_FORMAT,
         level=log_level,
