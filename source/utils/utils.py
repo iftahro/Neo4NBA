@@ -2,15 +2,13 @@ import logging
 import os
 import shutil
 
-from source.config import LOGGING_FORMAT
 
-
-def configure_logging(log_level):
+def configure_logging(log_level, logging_format):
     """
     Configures the system logs
     """
     logging.basicConfig(
-        format=LOGGING_FORMAT,
+        format=logging_format,
         level=log_level,
         handlers=[logging.StreamHandler()])
 
