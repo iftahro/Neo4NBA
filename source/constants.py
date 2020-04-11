@@ -1,3 +1,14 @@
+import logging
+import os
+
+# Graph files
+GRAPH_FILES_DIRECTORY_PATH = os.path.dirname(__file__).replace("source", "graph_files")
+
+# Logging
+LOGGING_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+LOG_LEVEL = logging.DEBUG
+
+# NBA
 PERSONAL_AWARDS = {"Most Valuable Player": "MVP",
                    "Rookie of the Year": "ROY",
                    "Most Improved Player": "MIP",
