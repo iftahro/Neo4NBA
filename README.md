@@ -39,15 +39,17 @@ Follow the next three steps and your graph is ready:
 ### 1. Basic Configuration
 In the 'source/config.py' file you will need to **enter your neo4j server credentials and bolt address**:
 ```python
+# Neo4j server
 NEO4J_USERNAME = "neo4j"
 NEO4J_PASSWORD = "neo4j"
 NEO4J_BOLT_ADDRESS = "bolt://localhost:7687"
 ```
 
 The graph is based on static csv files that are located in the 'graph_files' folder.
-**Enter your local server 'import' dir path the and set the 'should_copy' flag *True*** in order to copy these files into your server:
+**Enter your local server 'import' dir path and set the 'should_copy' flag *True*** in order to copy these files into your server:
 ```python
-NEO4J_IMPORT_DIRECTORY = "C:\user\programming\neo4j-community-4.0.0\import"
+# Graph files
+NEO4J_IMPORT_DIRECTORY = "C:\user\neo4j-community-4.0.0\import"
 SHOULD_COPY_FILES_TO_SERVER = True
 ```
 ### 2. Cypher APOC library
