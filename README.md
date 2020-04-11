@@ -28,41 +28,39 @@ Local neo4j server 3.5.14 (https://neo4j.com/download-center/#community)
 ### Packages
 neo4j 1.7.0
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install neo4j package
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install neo4j package:
 
 ```bash
 pip install neo4j
 ```
 
 ## Setup
-### config.py
-In the config file you will need to enter your neo4j server credentials and bolt address
+Follow the next three steps and your graph is ready:
+### 1. Basic Configuration
+In the 'source/config.py' file you will need to **enter your neo4j server credentials and bolt address**:
 ```python
-NEO4J_USERNAME = "username"
-NEO4J_PASSWORD = "passwrod"
-NEO4J_BOLT_ADDRESS = "bolt_address"
+NEO4J_USERNAME = "neo4j"
+NEO4J_PASSWORD = "neo4j"
+NEO4J_BOLT_ADDRESS = "bolt://localhost:7687"
 ```
 
 The graph is based on static csv files that are located in the 'graph_files' folder.
-In order to copy them into your local server you will need to enter your server import directory path
-the and set the *should_copy* flag *True*
-
+**Enter your local server 'import' dir path the and set the 'should_copy' flag *True*** in order to copy these files into your server:
 ```python
-NEO4J_IMPORT_DIRECTORY = "import_dir_path"
+NEO4J_IMPORT_DIRECTORY = "C:\user\programming\neo4j-community-4.0.0\import"
 SHOULD_COPY_FILES_TO_SERVER = True
 ```
-### APOC library
+### 2. Cypher APOC library
 The neo4j query language (cypher) supports a user-defined procedures and functions library called 'apoc', 
 which is used by some of the graph updaters.
 
-In order for them to work you will need to move the attached 'apoc.jar' file into your local neo4j server 'plugins' folder
-### Neo4j browser style
-Drag the attached 'style.grass' file to your neo4j browser and release for a more visual and clear graph
-### DB dump file (optional)
-For those of you that already familiar with neo4j, you can skip the graph update by the overlay method (one by one),
-and load directly the attached 'neo4nba.dump' file into your neo4j server
+In order for them to work **copy the attached 'apoc.jar' file into your local neo4j server 'plugins' folder.**
+### 3. Neo4j browser style
+**Drag the attached 'style.grass' file to your neo4j browser** and release to get a visual, clear graph.
+### 4. DB dump file (optional)
+Users that are already familiar with neo4j, can load directly the attached 'neo4nba.dump' file into their neo4j server.
 
-Thats it! Your'e good to go.
+**That's it! Your'e good to go. Run the 'main.py' file.**
 
 ## To Be Added
 
